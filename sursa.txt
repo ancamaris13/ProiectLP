@@ -1,0 +1,5 @@
+https://chatgpt.com/
+https://github.com/SergeyPirogov/webdriver_manager
+ttps://selenium-python.readthedocs.io/
+https://www.scrapingbee.com/blog/selenium-python/
+https://github.com/SeleniumHQ/selenium
