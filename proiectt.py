@@ -45,7 +45,7 @@ def cleanup_driver(driver):
 #Login si logout dacă e necesar
 def login(driver, username, password):
     driver.get("https://www.saucedemo.com/")
-    time.sleep(1)
+    time.sleep(4)
 
     if "inventory.html" in driver.current_url:
         try:
@@ -61,7 +61,7 @@ def login(driver, username, password):
     driver.find_element(By.ID, "login-button").click()
     WebDriverWait(driver, 10).until(EC.url_contains("inventory.html"))
 
-    time.sleep(2)  #Pauză vizuală după login
+    time.sleep(4)  #Pauză 
 
 #Adaugă 3 produse în coș
 def add_items_to_cart(driver):
@@ -75,7 +75,7 @@ def add_items_to_cart(driver):
                 driver.execute_script("arguments[0].scrollIntoView(true);", btn)
                 WebDriverWait(driver, 5).until(EC.element_to_be_clickable(btn)).click()
                 added += 1
-                time.sleep(1)  #Pauză vizuală după adăugare
+                time.sleep(4)  #Pauza
                 break  #Regăsește lista butoanelor după modificare
 
     #Verificare badge coș
@@ -83,7 +83,7 @@ def add_items_to_cart(driver):
         EC.presence_of_element_located((By.CLASS_NAME, "shopping_cart_badge"))
     )
     assert cart_badge.text == "3", f"Eroare: doar {cart_badge.text} produse adăugate!"
-    time.sleep(2)  #Pauză vizuală
+    time.sleep(4)  #Pauză 
 
 #Checkout complet
 def checkout(driver):
@@ -93,7 +93,7 @@ def checkout(driver):
     WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.ID, "first-name"))).send_keys("Ion")
     driver.find_element(By.ID, "last-name").send_keys("Popescu")
     driver.find_element(By.ID, "postal-code").send_keys("123456")
-    time.sleep(2)  # Pauză după completarea formularului
+    time.sleep(4)  #Pauză 
 
     driver.find_element(By.ID, "continue").click()
     WebDriverWait(driver, 5).until(EC.presence_of_element_located((By.ID, "finish"))).click()
@@ -102,7 +102,7 @@ def checkout(driver):
     )
     assert "THANK YOU FOR YOUR ORDER" in confirmation.text
 
-    time.sleep(3)  #Pauză finală pentru a vedea mesajul de confirmare
+    time.sleep(4)  #Pauză 
 
 # Rulează testul complet pentru un user
 def run_test_for_user(user):
